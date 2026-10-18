@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ArrowRight, Atom, BarChart3, FlaskConical, Leaf, Microscope, Presentation, Thermometer, Zap } from 'lucide-react';
+import { ArrowRight, Atom, Beaker, BarChart3, FlaskConical, Leaf, Microscope, Presentation, Thermometer, Zap } from 'lucide-react';
 import { ChipVisual } from '../components/chip/ChipVisual';
 import { STATUS_TONE } from '../components/sim/LiveIndicators';
 import { SimClock } from '../components/sim/SimClock';
@@ -14,7 +14,8 @@ import { temperatureTextColor } from '../utils/color';
 import { fmt } from '../utils/format';
 
 const MODULES = [
-  { href: '#/simulador', icon: Thermometer, title: 'Simulador térmico', text: 'Carga, refrigeración y temperatura en tiempo real con C·dT/dt = P − ΔT/R.', color: 'from-orange-500/20' },
+  { href: '#/laboratorio', icon: Beaker, title: 'Laboratorio: prácticas guiadas', text: 'Haz los experimentos: hipótesis, mediciones con instrumentos, bitácora, gráficas e informe.', color: 'from-amber-500/20' },
+  { href: '#/simulador', icon: Thermometer, title: 'Simulador (modo libre)', text: 'Carga, refrigeración y temperatura en tiempo real con C·dT/dt = P − ΔT/R.', color: 'from-orange-500/20' },
   { href: '#/quimica', icon: Atom, title: 'Química de semiconductores', text: 'Enlaces, bandas de energía y electrones excitados por la temperatura.', color: 'from-violet-500/20' },
   { href: '#/dopaje', icon: FlaskConical, title: 'Dopaje químico', text: 'Silicio tipo N con fósforo y tipo P con boro, átomo por átomo.', color: 'from-cyan-500/20' },
   { href: '#/comparador', icon: BarChart3, title: 'Comparador', text: 'Si, Ge, GaAs y perovskitas: datos publicados lado a lado.', color: 'from-sky-500/20' },
@@ -50,8 +51,11 @@ export function DashboardPage() {
               Cambia la carga y la refrigeración, observa cómo evoluciona la temperatura y descubre qué les ocurre a los electrones dentro del silicio, el germanio y el arseniuro de galio.
             </p>
             <div className="flex flex-wrap gap-3">
-              <a href="#/simulador" className="btn-primary">
-                Abrir simulador <ArrowRight size={16} aria-hidden />
+              <a href="#/laboratorio" className="btn-primary">
+                <Beaker size={16} aria-hidden /> Entrar al laboratorio
+              </a>
+              <a href="#/simulador" className="btn-ghost">
+                Simulador libre <ArrowRight size={16} aria-hidden />
               </a>
               <a href="#/presentacion" className="btn-ghost">
                 <Presentation size={16} aria-hidden /> Modo presentación

@@ -8,13 +8,16 @@ import { ChemistryPage } from './pages/ChemistryPage';
 import { ComparatorPage } from './pages/ComparatorPage';
 import { DashboardPage } from './pages/DashboardPage';
 import { DopingPage } from './pages/DopingPage';
+import { LabHubPage } from './pages/LabHubPage';
 import { NanoPage } from './pages/NanoPage';
+import { PracticePage } from './pages/PracticePage';
 import { PresentationMode } from './pages/PresentationMode';
 import { ResultsPage } from './pages/ResultsPage';
 import { SimulatorPage } from './pages/SimulatorPage';
 
 const PAGES: Record<string, () => ReactNode> = {
   '/': () => <DashboardPage />,
+  '/laboratorio': () => <LabHubPage />,
   '/simulador': () => <SimulatorPage />,
   '/quimica': () => <ChemistryPage />,
   '/dopaje': () => <DopingPage />,
@@ -58,7 +61,9 @@ function NotFound() {
 
 export default function App() {
   const { route } = useHashRoute();
-  const page = PAGES[route.path];
+  const labMatch = route.path.match(/^\/laboratorio\/(\w+)$/);
+  const page = labMatch ? () => <PracticePage id={labMatch[1]} /> : PAGES[route.path];
+  const navPath = labMatch ? '/laboratorio' : route.path;
 
   useEffect(() => {
     if (route.query.get('ref')) {
@@ -75,7 +80,7 @@ export default function App() {
           <PresentationMode />
         </ErrorBoundary>
       ) : (
-        <AppShell current={route.path}>
+        <AppShell current={navPath}>
           <ErrorBoundary key={route.path}>
             <motion.div key={route.path} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.2 }}>
               {page ? page() : <NotFound />}

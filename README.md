@@ -31,10 +31,27 @@ Abre la URL que muestra la terminal (por defecto http://localhost:5173).
 La carpeta `dist/` usa rutas relativas y navegación por hash (`#/simulador`), así que puede
 abrirse desde cualquier hosting estático.
 
+## Dos formas de usarlo
+
+- **Laboratorio (prácticas guiadas)**: el estudiante *hace* el experimento. Cada práctica sigue el
+  método experimental: hipótesis → experimento en un banco con instrumentos → bitácora de datos →
+  análisis con sus propios datos (gráfica y ajuste por mínimos cuadrados) → preguntas con
+  retroalimentación → informe imprimible y CSV. El progreso se guarda en el navegador.
+- **Simulador (modo libre)**: explorar sin guion todos los parámetros.
+
+### Prácticas
+
+| # | Práctica | Instrumentos | Resultado que obtiene el estudiante |
+| - | -------- | ------------ | ----------------------------------- |
+| 1 | Carga de trabajo y temperatura | Chip de prueba, termómetro con indicador de estabilidad, vatímetro | Resistencia térmica R = pendiente de T frente a P |
+| 2 | Sistemas de refrigeración | Disipador pasivo, ventilador, refrigeración líquida | R de cada sistema y consumo total |
+| 3 | Banda prohibida | Horno, barras de Si/Ge/GaAs, multímetro (rango máx. 2 GΩ) | Eg a partir de ln(G) frente a 1/T |
+| 4 | Muestra desconocida | Punta caliente + voltímetro, sonda de 4 puntas | Tipo N/P y concentración con la curva ρ–N |
+
 ## Módulos
 
 1. **Inicio**: chip en vivo, controles rápidos y acceso a los módulos.
-2. **Simulador térmico**: controles (carga, ambiente, refrigeración, material, protección
+2. **Simulador térmico (modo libre)**: controles (carga, ambiente, refrigeración, material, protección
    térmica), chip con mapa de calor, indicadores en tiempo real, gráficas de temperatura y potencia.
 3. **Química de semiconductores**: diagrama de bandas animado, Varshni, nᵢ(T), movilidad,
    fichas de Si, Ge, GaAs y perovskitas.
@@ -80,6 +97,7 @@ Cada valor se etiqueta en la interfaz como **dato publicado**, **supuesto**, **c
 src/
   data/        Valores físicos con unidades y referencias (materials, thermalConfig, references…)
   science/     Lógica científica pura + pruebas (*.test.ts)
+  lab/         Laboratorio: guías de prácticas, instrumentos, bancos de trabajo, bitácora
   context/     Motor de simulación compartido (bucle requestAnimationFrame)
   components/  UI reutilizable, chip, gráficas, diagramas científicos
   content/     Textos dinámicos de «¿Qué está ocurriendo químicamente?»

@@ -1,4 +1,4 @@
-import { Atom, BarChart3, FlaskConical, GraduationCap, LayoutDashboard, Leaf, Microscope, Thermometer, type LucideIcon } from 'lucide-react';
+import { Atom, Beaker, BarChart3, FlaskConical, GraduationCap, LayoutDashboard, Leaf, Microscope, Thermometer, type LucideIcon } from 'lucide-react';
 
 export interface NavItem {
   path: string;
@@ -9,7 +9,8 @@ export interface NavItem {
 
 export const NAV: NavItem[] = [
   { path: '/', label: 'Inicio', short: 'Inicio', icon: LayoutDashboard },
-  { path: '/simulador', label: 'Simulador térmico', short: 'Simulador', icon: Thermometer },
+  { path: '/laboratorio', label: 'Laboratorio (prácticas)', short: 'Laboratorio', icon: Beaker },
+  { path: '/simulador', label: 'Simulador (modo libre)', short: 'Simulador', icon: Thermometer },
   { path: '/quimica', label: 'Química de semiconductores', short: 'Química', icon: Atom },
   { path: '/dopaje', label: 'Dopaje químico', short: 'Dopaje', icon: FlaskConical },
   { path: '/comparador', label: 'Comparador de materiales', short: 'Comparador', icon: BarChart3 },
